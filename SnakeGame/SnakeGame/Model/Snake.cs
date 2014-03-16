@@ -28,9 +28,9 @@ namespace Player
       }
       public Snake(int direction, SnakePart first,int step)
       {
-          direction = 0;
+          this.direction = direction;
           snake.Enqueue(first);
-          step = 0;
+          this.step = step;
       }
       //private void StartGame()
       //{
