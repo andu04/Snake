@@ -7,8 +7,8 @@ namespace Player
 {
     class SnakePart
     {
-        public int X ; 
-        public int Y; 
+        private int X ; 
+        private int Y; 
         public int getX()
         {
         return X;
