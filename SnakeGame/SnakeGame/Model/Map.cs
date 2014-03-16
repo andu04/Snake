@@ -8,10 +8,55 @@ namespace SnakeGame.Model
 {
     class Map
     {
-        int cellSize;
-        int mapRows;
-        int mapColumns;
-        List<MapCell> mapCells;
+        private int cellSize;
+        private int mapRows;
+        private int mapColumns;
+        private List<MapCell> mapCells;
+        public int CellSize
+        {
+            get
+            {
+                return cellSize;
+            }
+            set
+            {
+                cellSize = value;
+            }
+        }
+        public int MapRows
+        {
+            get
+            {
+                return mapRows;
+            }
+            set
+            {
+                mapRows = value;
+            }
+        }
+        public int MapColumns
+        {
+            get
+            {
+                return mapColumns;
+            }
+            set
+            {
+                mapColumns = value;
+            }
+        }
+        public List<MapCell> MapCells
+        {
+            get
+            {
+                return mapCells;
+            }
+            set
+            {
+                mapCells = value;
+            }
+        }
+
 
         public Map(int cellSize, int mapRows, int mapColumns)
         {
