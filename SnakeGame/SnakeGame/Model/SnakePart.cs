@@ -7,29 +7,25 @@ namespace Player
 {
     class SnakePart
     {
-        private int X ; 
-        private int Y; 
-        public int getX()
+        private int x ; 
+        private int y; 
+        
+        public SnakePart(int x, int y)
         {
-        return X;
+            this.x = x;
+            this.y = y;
         }
-        public int getY()
+
+        public int X
         {
-            return Y;
+            get { return x; }
+            set { x = value; }
         }
-        public void setX(int X1)
+
+        public int Y
         {
-            this.X = X1 ;
-        }
-        public void setY(int Y1)
-        {
-            this.Y = Y1;
-        }
-        // Constructor
-        public SnakePart()
-        {
-            X = 0;
-            Y = 0;
+            get { return y; }
+            set { y = value; }
         }
     }
 }
