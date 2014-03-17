@@ -6,7 +6,7 @@ using System.Collections;
 
 
 
-namespace Player
+namespace SnakeGame.Model
 {
     class Snake
     {
