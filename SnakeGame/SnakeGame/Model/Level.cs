@@ -13,7 +13,7 @@ namespace SnakeGame.Model
         private String name;
         private int id;
 
-        public Map Map
+        public Map LevelMap
         {
             get { return levelMap; }
             set { levelMap = value; }

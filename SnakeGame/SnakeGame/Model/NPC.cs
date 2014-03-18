@@ -11,11 +11,11 @@ namespace SnakeGame.Model
         private int positionOnY;
         private int points;
         private String type;
-        public NPC(int x, int y, int value, String type)
+        public NPC(int x, int y, int points, String type)
         {
             this.positionOnX = x;
             this.positionOnY = y;
-            this.points = value;
+            this.points = points;
             this.type = type;
         }
         public int PositionOnX

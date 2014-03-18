@@ -9,7 +9,7 @@ namespace SnakeGame.Model
     /* Singleton */
     class SpeedController
     {
-        private SpeedController instance;
+        private static SpeedController instance;
 
         private long delay;
         private bool isPaused;
@@ -23,7 +23,7 @@ namespace SnakeGame.Model
             this.isPaused = true;
         }
 
-        public SpeedController GetInstance()
+        public static SpeedController GetInstance()
         {
             if (instance == null)
             {

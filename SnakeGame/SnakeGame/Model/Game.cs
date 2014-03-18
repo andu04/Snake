@@ -13,12 +13,12 @@ namespace SnakeGame.Model
         private Player player;
         private SpeedController speedController;
 
-        public Game(Level level, Snake snake, Player player, SpeedController speedController)
+        public Game(Level level, Snake snake, Player player)
         {
             this.level = level;
             this.snake = snake;
             this.player = player;
-            this.speedController = speedController;
+            this.speedController = SpeedController.GetInstance();
         }
 
     }
