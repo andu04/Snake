@@ -7,30 +7,32 @@ namespace SnakeGame.Model
 {
     abstract class NPC
     {
-        private int x, y, value;
+        private int positionOnX;
+        private int positionOnY;
+        private int points;
         private String type;
         public NPC(int x, int y, int value, String type)
         {
-            this.x = x;
-            this.y = y;
-            this.value = value;
+            this.positionOnX = x;
+            this.positionOnY = y;
+            this.points = value;
             this.type = type;
         }
-        public int X
+        public int PositionOnX
         {
-            get { return x; }
-            set { x = value; }
+            get { return positionOnX; }
+            set { positionOnX = value; }
         }
 
-        public int Y
+        public int PositionOnY
         {
-            get { return y; }
-            set { y = value; }
+            get { return positionOnY; }
+            set { positionOnY = value; }
         }
         public int Value
         {
-            get { return value; }
-            set { this.value = value; }
+            get { return points; }
+            set { this.points = value; }
         }
 
         public String Type
@@ -39,9 +41,9 @@ namespace SnakeGame.Model
             set { type = value; }
         }
 
-        protected abstract void appear();
-        protected abstract void dissapear();
-        protected abstract void generatePosition();
+        protected abstract void Appear();
+        protected abstract void Dissapear();
+        protected abstract void GeneratePosition();
         
     }
 }

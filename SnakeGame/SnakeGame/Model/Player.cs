@@ -8,41 +8,41 @@ namespace SnakeGame.Model
     class Player
     {
         private string name;
+        private int score;
+        private int livesLeft;
+        private int highScore;
+        private int lastLevelId;
+        private long timePlayed;
 
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
-        private int score;
 
         public int Score
         {
             get { return score; }
             set { score = value; }
         }
-        private int livesLeft;
 
         public int LivesLeft
         {
             get { return livesLeft; }
             set { livesLeft = value; }
         }
-        private int highScore;
 
         public int HighScore
         {
             get { return highScore; }
             set { highScore = value; }
         }
-        private int lastLevelId;
 
         public int LastLevelId
         {
             get { return lastLevelId; }
             set { lastLevelId = value; }
         }
-        long timePlayed;
 
         public long TimePlayed
         {
@@ -57,10 +57,15 @@ namespace SnakeGame.Model
             this.livesLeft = startingLives;
             this.lastLevelId = lastLevelId;
             this.timePlayed = timePlayed;
-
+            this.score = 0;
+            this.highScore = 0;
         }
-
-
+        public Player(string name, int startingLives, int lastLevelId, long timePlayed, int score, int highScore)
+            :this(name, startingLives, lastLevelId, timePlayed)
+        {
+            this.score = score;
+            this.highScore = highScore;
+        }
 
         public void AddPoints(int totalPoints)
         {
@@ -69,7 +74,6 @@ namespace SnakeGame.Model
 
         public void Kill()
         {
-
             if (livesLeft > 0)
             {
                 livesLeft--;

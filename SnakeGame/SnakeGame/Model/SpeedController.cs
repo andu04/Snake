@@ -14,6 +14,9 @@ namespace SnakeGame.Model
         private long delay;
         private bool isPaused;
 
+        public long Delay { get { return delay; } set { delay = value; } }
+        public bool IsPaused { get { return isPaused; } set { isPaused = value; } }
+
         private SpeedController()
         {
             this.delay = 1000 / 60;

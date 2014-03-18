@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,25 +7,25 @@ namespace SnakeGame.Model
 {
     class SnakePart
     {
-        private int x ; 
-        private int y; 
+        private int positionOnX ; 
+        private int positionOnY; 
         
         public SnakePart(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.positionOnX = x;
+            this.positionOnY = y;
         }
 
-        public int X
+        public int PositionOnX
         {
-            get { return x; }
-            set { x = value; }
+            get { return positionOnX; }
+            set { positionOnX = value; }
         }
 
-        public int Y
+        public int PositionOnY
         {
-            get { return y; }
-            set { y = value; }
+            get { return positionOnY; }
+            set { positionOnY = value; }
         }
     }
 }

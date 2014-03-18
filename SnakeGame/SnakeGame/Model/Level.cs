@@ -8,15 +8,15 @@ namespace SnakeGame.Model
 {
     class Level
     {
-        private Map map;
+        private Map levelMap;
         private List<NPC> npcs;
         private String name;
         private int id;
 
         public Map Map
         {
-            get { return map; }
-            set { map = value; }
+            get { return levelMap; }
+            set { levelMap = value; }
         }
 
         public List<NPC> Npcs
@@ -41,6 +41,11 @@ namespace SnakeGame.Model
         {
             this.name = name;
             this.id = id;
+        }
+        public Level(String name, int id, Map levelMap)
+            :this(name, id)
+        {
+            this.levelMap = levelMap;
         }
 
         public void AddNPC(NPC npc)

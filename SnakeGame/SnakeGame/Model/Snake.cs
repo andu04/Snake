@@ -11,25 +11,32 @@ namespace SnakeGame.Model
     class Snake
     {
 
-      private  Queue<SnakePart> snake = new Queue<SnakePart>();
-      private int direction ; // Down = 0, Left = 1, Right = 2, Up = 3
+      private  Queue<SnakePart> bodyParts = new Queue<SnakePart>();
+      public enum SnakeDirection
+      {
+          Up,
+          Down,
+          Left,
+          Right
+      }
+      private SnakeDirection direction;
+      private int step;
 
-      public int Direction
+      public SnakeDirection Direction
       {
           get { return direction; }
           set { direction = value; }
       }
-      private int step;
 
       public int Step
       {
           get { return step; }
           set { step = value; }
       }
-      public Snake(int direction, SnakePart first,int step)
+      public Snake(SnakeDirection direction, SnakePart first,int step)
       {
           this.direction = direction;
-          snake.Enqueue(first);
+          bodyParts.Enqueue(first);
           this.step = step;
       }
       //private void StartGame()
@@ -44,13 +51,12 @@ namespace SnakeGame.Model
       //}
       public void addPart(SnakePart part)
       {
-          snake.Enqueue(part);
+          bodyParts.Enqueue(part);
 
       }
       public void removePart()
       {
-          snake.Dequeue();
-
+          bodyParts.Dequeue();
       }
    
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SnakeGame.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,24 +8,29 @@ namespace SnakeApplication
 {
     class Enemie:NPC
     {
-
-        public void appear()
+        public Enemie(int x, int y, int value, String type)
+            :base(x, y, value, type)
         {
-            //appear on map enemie de tipl type
-            //sa nu apara pe pozitii suprapuse cu sarpele sau cu un fruct
+
         }
 
-        public void dissapear()
+        protected override void Appear()
         {
-            //dispare la sf nivelului
+            //appear on map pe poz x,y, fructtul de tipul type
+            //conditii: sa nu fie pe aceleasi coordonate ca si sarpele sau cu vreun enemie(sa nu se suprapuna)
+            throw new NotImplementedException();
         }
 
-        public void generatePosition()
+        protected override void Dissapear()
         {
-           //se genereaza o pozitie in functie de nivel
-           //ma gandeam sa punem poisonFruits pe care daca le mananca sa se interschimbe directiile(st-dr si sus-jos) 
-            //si obstacole dar nu stiu daca sa mai fac clase separate si pt ele sau doar schimbam type-ul
-           
+            //remove npc then appear npc daca nu s-a terminat nivelul
+            throw new NotImplementedException();
+        }
+
+        protected override void GeneratePosition()
+        {
+            //genereaza random o pozitie a unui npc care sa nu se suprapuna cu  pozitia sarpelui sau a vreunui enemie
+            throw new NotImplementedException();
         }
     }
 }

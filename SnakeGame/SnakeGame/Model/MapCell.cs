@@ -8,19 +8,15 @@ namespace SnakeGame.Model
 {
     class MapCell
     {
-        enum MapCellType
+        public enum MapCellType
         {
-            Grass, Sand
+            Normal,
+            Block,
+            Slowdown,
+            Accelerate,
         }
 
-        private double cellSize;
         private MapCellType cellType;
-
-        public double CellSize
-        {
-            get { return cellSize; }
-            set { cellSize = value; }
-        }
         
         public MapCellType CellType
         {
@@ -28,9 +24,8 @@ namespace SnakeGame.Model
             set { cellType = value; }
         }
 
-        public MapCell(double cellSize, MapCellType cellType)
+        public MapCell(MapCellType cellType)
         {
-            this.cellSize = cellSize;
             this.cellType = cellType;
         }
     }

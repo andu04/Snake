@@ -65,6 +65,12 @@ namespace SnakeGame.Model
             this.mapColumns = mapColumns;
             mapCells = new List<MapCell>();
         }
+
+        public Map(int cellSize, int mapRows, int mapColumns, List<MapCell> mapCells)
+            :this(cellSize, mapRows, mapColumns)
+        {
+            this.mapCells = mapCells;
+        }
         public void addMapCell(MapCell newMapCell)
         {
             mapCells.Add(newMapCell);
