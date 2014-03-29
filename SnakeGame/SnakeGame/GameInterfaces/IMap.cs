@@ -9,9 +9,9 @@ namespace SnakeGame.GameInterfaces
 {
     interface IMap
     {
-        public int MapRows { get; set; }
-        public int MapColumns { get; set; }
-        public MapCell GetMapCell(int x, int y);
-        public void AddMapCell(MapCell mapCell);
+        int MapRows { get; set; }
+        int MapColumns { get; set; }
+        MapCell GetMapCell(int x, int y);
+        void AddMapCell(MapCell mapCell);
     }
 }

@@ -9,13 +9,13 @@ namespace SnakeGame.GameInterfaces
 {
     interface IGame
     {
-        public void StartGame();
-        public void PauseGame();
-        public bool GameWon();
-        public bool GameLost();
-        public Player GetPlayer();
-        public ISnake GetSnake();
-        public ILevel GetLevel();
-        public void UpdateGame();
+        void StartGame();
+        void PauseGame();
+        bool GameWon();
+        bool GameLost();
+        Player GetPlayer();
+        ISnake GetSnake();
+        ILevel GetLevel();
+        void UpdateGame();
     }
 }
