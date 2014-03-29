@@ -8,21 +8,9 @@ namespace SnakeGame.Model
 {
     class Map
     {
-        private int cellSize;
         private int mapRows;
         private int mapColumns;
         private List<MapCell> mapCells;
-        public int CellSize
-        {
-            get
-            {
-                return cellSize;
-            }
-            set
-            {
-                cellSize = value;
-            }
-        }
         public int MapRows
         {
             get
@@ -58,16 +46,15 @@ namespace SnakeGame.Model
         }
 
 
-        public Map(int cellSize, int mapRows, int mapColumns)
+        public Map(int mapRows, int mapColumns)
         {
-            this.cellSize = cellSize;
             this.mapRows = mapRows;
             this.mapColumns = mapColumns;
             mapCells = new List<MapCell>();
         }
 
-        public Map(int cellSize, int mapRows, int mapColumns, List<MapCell> mapCells)
-            :this(cellSize, mapRows, mapColumns)
+        public Map(int mapRows, int mapColumns, List<MapCell> mapCells)
+            :this(mapRows, mapColumns)
         {
             this.mapCells = mapCells;
         }

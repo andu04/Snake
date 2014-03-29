@@ -28,5 +28,6 @@ namespace SnakeGame.Model
         {
             this.cellType = cellType;
         }
+
     }
 }
