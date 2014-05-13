@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnakeGame.GameInterfaces
 {
-    interface IGame
+    public interface IGame
     {
         void StartGame();
         void PauseGame();

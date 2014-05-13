@@ -22,8 +22,8 @@
 
         </Grid>
 
-        <Grid Grid.Column="1" Background="AliceBlue">
-
+        <Grid Grid.Column="1" Background="AliceBlue" Name="levelUCGrid">
+            
         </Grid>
     </Grid>
 </Window>

@@ -15,7 +15,6 @@ namespace SnakeGame.GameInterfaces
     }
     public interface ISnake
     {
-
         void RemoveSnakePart();
         void AddSnakePart(int x, int y);
         void MoveSnake();

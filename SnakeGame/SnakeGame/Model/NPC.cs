@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SnakeGame.Model
 {
-    abstract class NPC
+    public abstract class NPC
     {
         private int positionOnX;
         private int positionOnY;

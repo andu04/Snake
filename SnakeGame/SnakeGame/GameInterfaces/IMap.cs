@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SnakeGame.GameInterfaces
 {
-    interface IMap
+    public interface IMap
     {
         int MapRows { get; }
         int MapColumns { get; }

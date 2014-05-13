@@ -31,6 +31,10 @@ namespace SnakeGame
                 PlayerUserControl playerC = new PlayerUserControl(player);
 
                 playerUCGrid.Children.Add(playerC);
+                //LevelUserControl level = new LevelUserControl();
+              //  levelUCGrid.Children.Add(level);
+
+               // level.Update();
             }
             catch (Exception)
             {

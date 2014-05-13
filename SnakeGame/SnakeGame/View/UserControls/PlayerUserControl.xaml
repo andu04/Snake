@@ -27,7 +27,7 @@
                            HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <StackPanel Grid.Column="1" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">Time played:</TextBlock>
-                    <TextBlock Text="{Binding Path=TimePlayed, Converter={StaticResource intToTimeSpanConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Text="{Binding  Path=TimePlayed, Converter={StaticResource intToTimeSpanConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">

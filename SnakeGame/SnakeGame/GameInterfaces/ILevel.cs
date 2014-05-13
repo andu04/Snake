@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace SnakeGame.GameInterfaces
 {
-    interface ILevel
+     public interface ILevel
     {
         void AddNPC(int x, int y);
         void RemoveNPC(int x, int y);
 
-        IMap LevelMap { get; }
+         IMap LevelMap { get; }
 
         long TimeToPlayInMilliS { get; }
 
         int Id { get; }
 
-        List<NPC> GetNPCList();
+         List<NPC> GetNPCList();
 
     }
 }
