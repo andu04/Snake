@@ -10,7 +10,11 @@ namespace SnakeGame.Model
         private int positionOnX;
         private int positionOnY;
         private int points;
-        
+
+        public NPC()
+        {
+        }
+
         public NPC(int x, int y, int points)
         {
             this.positionOnX = x;

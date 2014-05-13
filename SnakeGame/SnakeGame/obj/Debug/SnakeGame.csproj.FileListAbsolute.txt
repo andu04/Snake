@@ -11,3 +11,22 @@ D:\Snake\SnakeGame\SnakeGame\bin\Debug\SnakeGame.pdb
 D:\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
 D:\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
 D:\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csprojResolveAssemblyReference.cache
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe.config
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csprojResolveAssemblyReference.cache
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\MainWindow.baml
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\MainWindow.g.cs
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\App.g.cs
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame_MarkupCompile.cache
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.g.resources
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Properties.Resources.resources
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.GenerateResource.Cache
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\bin\Debug\SnakeGame.pdb
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\View\UserControls\LevelUserControl.baml
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\View\UserControls\LevelUserControl.g.cs
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\View\UserControls\PlayerUserControl.g.cs
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame_MarkupCompile.lref
+E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\View\UserControls\PlayerUserControl.baml

@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace SnakeGame.Model
 {
-    class Player:INotifyPropertyChanged
+    public class Player:INotifyPropertyChanged
     {
         private string name;
         private List<int> highScore;

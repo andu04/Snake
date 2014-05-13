@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SnakeGame.Model;
+using SnakeGame.View.UserControls;
 
 namespace SnakeGame
 {
@@ -23,6 +25,17 @@ namespace SnakeGame
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                Player player = new Player("mihai", 5, 5, null);
+                PlayerUserControl playerC = new PlayerUserControl(player);
+
+                playerUCGrid.Children.Add(playerC);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("");
+            }
         }
     }
 }

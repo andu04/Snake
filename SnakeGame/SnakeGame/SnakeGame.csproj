@@ -53,6 +53,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\UserControls\Convertors\IntToArrayOfListItemsConvertor.cs" />
+    <Compile Include="View\UserControls\Convertors\IntToElementsInStringConverter.cs" />
+    <Compile Include="View\UserControls\Convertors\IntToTimeSpanConverter.cs" />
+    <Compile Include="View\UserControls\LevelUserControl.xaml.cs">
+      <DependentUpon>LevelUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\PlayerUserControl.xaml.cs">
+      <DependentUpon>PlayerUserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,6 +78,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UserControls\LevelUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\PlayerUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Enemie.cs" />

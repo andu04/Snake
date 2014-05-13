@@ -9,7 +9,7 @@ namespace SnakeGame.Model
     class Enemie:NPC
     {
         public Enemie(int x, int y, int value, String type)
-            :base(x, y, value, type)
+            //:base(x, y, value, type)
         {
 
         }
