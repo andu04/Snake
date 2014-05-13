@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SnakeGame.GameInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,34 @@ using System.Threading.Tasks;
 
 namespace SnakeGame.Model
 {
-    class Map
+    internal class Map:IMap
     {
+        private int MIN_MAP_ROWS = 10;
+        private int MIN_MAP_COLUMNS = 10;
         private int mapRows;
         private int mapColumns;
         private List<MapCell> mapCells;
+        private List<MapCell> snakeStartPosition;
+        public Map(int mapRows, int mapColumns)
+        {
+            if (mapRows < MIN_MAP_ROWS || mapColumns < MIN_MAP_COLUMNS)
+            {
+                throw new ArgumentOutOfRangeException("map rows or map columns is smaller than minim value");
+            }
+            this.MapRows = mapRows;
+            this.MapColumns = mapColumns;
+            mapCells = new List<MapCell>();
+            InitializeSnakeStartPosition();
+        }
+
+        private void InitializeSnakeStartPosition()
+        {
+            int middleY = MapColumns / 2;
+            snakeStartPosition = new List<MapCell>();
+            snakeStartPosition.Add(new MapCell(MapRows - 2, middleY));
+            snakeStartPosition.Add(new MapCell(MapRows - 1, middleY));
+        }
+
         public int MapRows
         {
             get
@@ -22,6 +46,7 @@ namespace SnakeGame.Model
                 mapRows = value;
             }
         }
+
         public int MapColumns
         {
             get
@@ -33,34 +58,25 @@ namespace SnakeGame.Model
                 mapColumns = value;
             }
         }
-        public List<MapCell> MapCells
+
+        public MapCell GetMapCell(int x, int y)
         {
-            get
-            {
-                return mapCells;
-            }
-            set
-            {
-                mapCells = value;
-            }
+            foreach (MapCell mapCell in mapCells)
+                if (mapCell.PositionOnX == x && mapCell.PositionOnY == y)
+                    return mapCell;
+            return null;
+        }
+
+        public void AddMapCell(MapCell mapCell)
+        {
+            if (mapCells.Contains(mapCell) == false)
+                mapCells.Add(mapCell);
         }
 
 
-        public Map(int mapRows, int mapColumns)
+        public List<MapCell> SnakeStartPosition
         {
-            this.mapRows = mapRows;
-            this.mapColumns = mapColumns;
-            mapCells = new List<MapCell>();
-        }
-
-        public Map(int mapRows, int mapColumns, List<MapCell> mapCells)
-            :this(mapRows, mapColumns)
-        {
-            this.mapCells = mapCells;
-        }
-        public void addMapCell(MapCell newMapCell)
-        {
-            mapCells.Add(newMapCell);
+            get { return snakeStartPosition; }
         }
     }
 }

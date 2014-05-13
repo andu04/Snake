@@ -18,7 +18,7 @@ namespace SnakeGame.GameInterfaces
 
         void RemoveSnakePart();
         void AddSnakePart(int x, int y);
-        void MoveSnake();
+        
         SnakeDirection Direction { get; set; }
 
         SnakePart GetSnakeHead();

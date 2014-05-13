@@ -12,13 +12,11 @@ namespace SnakeGame.GameInterfaces
         void AddNPC(int x, int y);
         void RemoveNPC(int x, int y);
 
-        IMap LevelMap { get; }
+        IMap LevelMap { get; set; }
 
-        long TimeToPlayInMilliS { get; }
+        int Id { get; set; }
 
-        int Id { get; }
-
-        List<NPC> GetNPCList();
+        List<NPC> getNPCList();
 
     }
 }

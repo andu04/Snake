@@ -5,12 +5,12 @@ using System.Text;
 
 namespace SnakeGame.Model
 {
-    public class SnakePart:IEquatable<SnakePart>
+    public class SnakePart
     {
         private int positionOnX ; 
         private int positionOnY; 
         
-        internal SnakePart(int x, int y)
+        public SnakePart(int x, int y)
         {
             this.positionOnX = x;
             this.positionOnY = y;
@@ -19,16 +19,13 @@ namespace SnakeGame.Model
         public int PositionOnX
         {
             get { return positionOnX; }
+            set { positionOnX = value; }
         }
 
         public int PositionOnY
         {
             get { return positionOnY; }
-        }
-
-        public bool Equals(SnakePart other)
-        {
-            return this.PositionOnX == other.PositionOnX && this.PositionOnY == other.PositionOnY;
+            set { positionOnY = value; }
         }
     }
 }

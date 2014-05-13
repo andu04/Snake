@@ -1,83 +1,72 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace SnakeGame.Model
 {
-    class Player
+    class Player:INotifyPropertyChanged
     {
         private string name;
-        private int score;
-        private int livesLeft;
-        private int highScore;
+        private List<int> highScore;
         private int lastLevelId;
         private long timePlayed;
 
         public string Name
         {
             get { return name; }
-            set { name = value; }
-        }
-
-        public int Score
-        {
-            get { return score; }
-            set { score = value; }
-        }
-
-        public int LivesLeft
-        {
-            get { return livesLeft; }
-            set { livesLeft = value; }
-        }
-
-        public int HighScore
-        {
-            get { return highScore; }
-            set { highScore = value; }
+            set { name = value;
+            NotifyPropoertyChanged("Name");
+            }
         }
 
         public int LastLevelId
         {
             get { return lastLevelId; }
-            set { lastLevelId = value; }
+            set { lastLevelId = value;
+            NotifyPropoertyChanged("LastLevelId");
+            }
         }
 
         public long TimePlayed
         {
             get { return timePlayed; }
-            set { timePlayed = value; }
+            set { timePlayed = value;
+            NotifyPropoertyChanged("TimePlayed");
+            }
         }
-
-
-        public Player(string name, int startingLives, int lastLevelId, long timePlayed)
+        public Player(string name, int lastLevelId, long timePlayed)
         {
-            this.name = name;
-            this.livesLeft = startingLives;
-            this.lastLevelId = lastLevelId;
-            this.timePlayed = timePlayed;
-            this.score = 0;
-            this.highScore = 0;
+            this.Name = name;
+            this.LastLevelId = lastLevelId;
+            this.TimePlayed = timePlayed;
+            this.highScore = new List<int>();
         }
-        public Player(string name, int startingLives, int lastLevelId, long timePlayed, int score, int highScore)
-            :this(name, startingLives, lastLevelId, timePlayed)
+        public Player(string name, int lastLevelId, long timePlayed, List<int> highScore)
+            :this(name, lastLevelId, timePlayed)
         {
-            this.score = score;
             this.highScore = highScore;
         }
 
-        public void AddPoints(int totalPoints)
+        public void AddHighscore(int levelId, int highscore)
         {
-            score += totalPoints;
+            highScore[levelId] = highscore;
+        }
+        public int GetHighscore(int levelId)
+        {
+            return highScore.ElementAt(levelId);
         }
 
-        public void Kill()
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropoertyChanged(string propertyName)
         {
-            if (livesLeft > 0)
+            if (PropertyChanged != null)
             {
-                livesLeft--;
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+
         }
     }
 }

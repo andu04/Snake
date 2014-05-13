@@ -1,25 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="SnakeGame.Model.Game" Collapsed="true">
-    <Position X="10.5" Y="2.75" Width="1.5" />
+    <Position X="14.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABCAgAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAgAAAABAAIAAAEAAAAhAAEAAAABCAkAAAAAAAA=</HashCode>
       <FileName>Model\Game.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="SnakeGame.Model.Level" Collapsed="true">
-    <Position X="10.5" Y="1.25" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgACAIAAAACCAAAAAgAAAAQAAAAEAAAAAAAAAAAAEgA=</HashCode>
+      <HashCode>AgACAIAAAACAAAAAAgAAAAAAAAAEAAAAAIAAAAAAEgA=</HashCode>
       <FileName>Model\Level.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="SnakeGame.Model.Map" Collapsed="true">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAIAAAACAAAAAAAAQAEAAEABAAAAAAAAAAIAIAA=</HashCode>
+      <HashCode>AAAgAAAAAAACAAAAABAAAAMAAAABAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Model\Map.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="SnakeGame.Model.MapCell" Collapsed="true">
     <Position X="5.75" Y="0.5" Width="1.5" />
@@ -27,35 +30,32 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AIAAAAAAQAAgAEAAIAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Model\MapCell.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SnakeGame.Model.NPC" Collapsed="true">
-    <Position X="10.5" Y="0.5" Width="1.5" />
+    <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAQAAgIEAAIAAAAAAAAAABAAAAgQAgACAAAAA=</HashCode>
+      <HashCode>AAAAAACAQAAgIUAAIAAAAAAAAAABAAAAgQAgACAAAAA=</HashCode>
       <FileName>Model\NPC.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SnakeGame.Model.Player">
+  <Class Name="SnakeGame.Model.Player" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAEBQgAgAAAAoAAQAIAAEBAAAAAQAAACAAAA=</HashCode>
+      <HashCode>AAAgAEAAIABAgAAAAAAAAAQAoAAEBQAAAAQAAACAAAA=</HashCode>
       <FileName>Model\Player.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="SnakeGame.Model.Snake" Collapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-      <Compartment Name="Properties" Collapsed="true" />
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
     <TypeIdentifier>
-      <HashCode>AIAAAABAAAAAIAAAACAAAAAAAAAhAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAABAAAAAIAAAACAAAAAAAAAAgCAEAAAAAAAAAgA=</HashCode>
       <FileName>Model\Snake.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="SnakeGame.Model.SnakePart" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
@@ -65,11 +65,39 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SnakeGame.Model.SpeedController" Collapsed="true">
-    <Position X="10.5" Y="5" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAgAAAAAAAAAAAAAAAAAAgABABIAAAAAAAgAAgAIAA=</HashCode>
       <FileName>Model\SpeedController.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Interface Name="SnakeGame.GameInterfaces.ILevel" Collapsed="true">
+    <Position X="12.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAIAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAA=</HashCode>
+      <FileName>GameInterfaces\ILevel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SnakeGame.GameInterfaces.IMap" Collapsed="true">
+    <Position X="6.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAMAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>GameInterfaces\IMap.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SnakeGame.GameInterfaces.ISnake" Collapsed="true">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAACAAAAAAAAAAgCAAAAAAAAAAAgA=</HashCode>
+      <FileName>GameInterfaces\ISnake.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SnakeGame.GameInterfaces.IGame" Collapsed="true">
+    <Position X="14.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAgAAAABAAIAAAEAAAAhAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>GameInterfaces\IGame.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

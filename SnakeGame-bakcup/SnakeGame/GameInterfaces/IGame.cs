@@ -11,12 +11,11 @@ namespace SnakeGame.GameInterfaces
     {
         void StartGame();
         void PauseGame();
-        void ChangeSnakeDirection(SnakeDirection dir);
-        bool GameWon { get; }
-        bool GameLost { get; }
-        long TimeElapsed { get; }
+        bool GameWon();
+        bool GameLost();
         Player GetPlayer();
         ISnake GetSnake();
         ILevel GetLevel();
+        void UpdateGame();
     }
 }
