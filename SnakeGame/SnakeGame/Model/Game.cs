@@ -113,22 +113,22 @@ namespace SnakeGame.Model
                 case SnakeDirection.Up:
                     if (currentMapCell.PositionOnX == 0)
                         return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX - 1, currentMapCell.PositionOnY);
+                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY - 1);
                     break;
                 case SnakeDirection.Down:
                     if (currentMapCell.PositionOnX == level.LevelMap.MapRows - 1)
                         return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX + 1, currentMapCell.PositionOnY);
+                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY + 1);
                     break;
                 case SnakeDirection.Left:
                     if (currentMapCell.PositionOnY == 0)
                         return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY - 1);
+                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX - 1, currentMapCell.PositionOnY);
                     break;
                 case SnakeDirection.Right:
                     if (currentMapCell.PositionOnY == level.LevelMap.MapColumns - 1)
                         return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY + 1);
+                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX + 1, currentMapCell.PositionOnY);
                     break;
                 default:
                     return false;

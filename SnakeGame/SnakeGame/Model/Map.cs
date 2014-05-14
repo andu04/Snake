@@ -24,15 +24,18 @@ namespace SnakeGame.Model
             this.MapRows = mapRows;
             this.MapColumns = mapColumns;
             mapCells = new List<MapCell>();
+            for (int i = 0; i < MapColumns; i++)
+                for (int j = 0; j < MapRows; j++)
+                    mapCells.Add(new MapCell(i, j));
             InitializeSnakeStartPosition();
         }
 
         private void InitializeSnakeStartPosition()
         {
-            int middleY = MapColumns / 2;
+            int middleX = MapColumns / 2;
             snakeStartPosition = new List<MapCell>();
-            snakeStartPosition.Add(new MapCell(MapRows - 2, middleY));
-            snakeStartPosition.Add(new MapCell(MapRows - 1, middleY));
+            snakeStartPosition.Add(new MapCell(middleX, MapRows - 2));
+            snakeStartPosition.Add(new MapCell(middleX - 1, MapRows - 1));
         }
 
         public int MapRows

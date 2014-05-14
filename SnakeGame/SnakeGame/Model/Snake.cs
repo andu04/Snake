@@ -78,16 +78,16 @@ namespace SnakeGame.Model
             switch (direction)
             {
                 case SnakeDirection.Up:
-                    newHeadPosition = new SnakePart(currentHeadPosition.PositionOnX - 1, currentHeadPosition.PositionOnY);
-                    break;
-                case SnakeDirection.Down:
-                    newHeadPosition = new SnakePart(currentHeadPosition.PositionOnX + 1, currentHeadPosition.PositionOnY);
-                    break;
-                case SnakeDirection.Left:
                     newHeadPosition = new SnakePart(currentHeadPosition.PositionOnX, currentHeadPosition.PositionOnY - 1);
                     break;
-                case SnakeDirection.Right:
+                case SnakeDirection.Down:
                     newHeadPosition = new SnakePart(currentHeadPosition.PositionOnX, currentHeadPosition.PositionOnY + 1);
+                    break;
+                case SnakeDirection.Left:
+                    newHeadPosition = new SnakePart(currentHeadPosition.PositionOnX - 1, currentHeadPosition.PositionOnY);
+                    break;
+                case SnakeDirection.Right:
+                    newHeadPosition = new SnakePart(currentHeadPosition.PositionOnX + 1, currentHeadPosition.PositionOnY);
                     break;
                 default:
                     newHeadPosition = currentHeadPosition;
