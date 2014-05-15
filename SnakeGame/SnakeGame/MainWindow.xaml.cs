@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SnakeGame.GameInterfaces;
 using SnakeGame.Model;
 using SnakeGame.View.UserControls;
 
@@ -22,6 +24,9 @@ namespace SnakeGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        public IGame game;
+        LevelUserControl levelUC;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,17 +34,57 @@ namespace SnakeGame
             {
                 Player player = new Player("mihai", 5, 5, null);
                 PlayerUserControl playerC = new PlayerUserControl(player);
-
                 playerUCGrid.Children.Add(playerC);
-                //LevelUserControl level = new LevelUserControl();
-              //  levelUCGrid.Children.Add(level);
 
-               // level.Update();
+                Map map1 = new Map(6, 10);
+                Level level = new Level("Level 1 Impossible", 1, map1);
+
+                game = new Game(level, player, this);
+
+                levelUC = new LevelUserControl(game);
+                levelUCGrid.Children.Add(levelUC);
+
+
+                game.StartGame();
+                Update();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("");
+                MessageBox.Show("Eroare in mainwindow : "+ex.Message);
             }
         }
+
+        public void Update()
+        {
+          
+            levelUC.Update();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine(e.Key.ToString());
+            if (e.Key == Key.Up)
+            {
+                game.GetSnake().Direction = SnakeDirection.Left;
+            }
+            if (e.Key == Key.Down)
+            {
+                game.GetSnake().Direction = SnakeDirection.Right;
+            }
+            if (e.Key == Key.Left)
+            {
+                game.GetSnake().Direction = SnakeDirection.Up;
+            }
+            if (e.Key == Key.Right)
+            {
+                game.GetSnake().Direction = SnakeDirection.Down;
+            }
+            if (e.Key == Key.Space)
+            {
+                game.GetSnake().AddSnakePart(5, 5);
+
+            }
+        }
+
     }
 }

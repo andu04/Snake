@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,25 +36,32 @@ namespace SnakeGame.View.UserControls
 
         public void Update()
         {
+            canvas.Children.Clear();
+            int viewCellSize = 30;
+
             //Rectangle part = new Rectangle();
             ISnake snake = model.GetSnake();
 
             SnakePart sp = snake.GetSnakeHead();
             Button part = new Button();
-            Canvas.SetLeft(part, sp.PositionOnX);
-            Canvas.SetTop(part, sp.PositionOnY);
-            part.Width = part.Height = 20;
+            Canvas.SetLeft(part, sp.PositionOnX * viewCellSize);
+            Canvas.SetTop(part, sp.PositionOnY * viewCellSize);
+            part.Width = part.Height = viewCellSize;
+            part.Content = "X";
             canvas.Children.Add(part);
 
-            while (sp!=null)
+            do
             {
                 sp = snake.GetNextPart(sp);
-                part = new Button();
-                Canvas.SetLeft(part, sp.PositionOnX);
-                Canvas.SetTop(part, sp.PositionOnY);
-                part.Width = part.Height = 20;
-                canvas.Children.Add(part);
-            }
+                if (sp != null)
+                {
+                    part = new Button();
+                    Canvas.SetLeft(part, sp.PositionOnX * viewCellSize);
+                    Canvas.SetTop(part, sp.PositionOnY * viewCellSize);
+                    part.Width = part.Height = viewCellSize;
+                    canvas.Children.Add(part);
+                }
+            } while (sp != null);
         }
     }
 }
