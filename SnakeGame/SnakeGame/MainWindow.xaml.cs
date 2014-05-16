@@ -36,17 +36,19 @@ namespace SnakeGame
                 PlayerUserControl playerC = new PlayerUserControl(player);
                 playerUCGrid.Children.Add(playerC);
 
-                Map map1 = new Map(6, 10);
-                Level level = new Level("Level 1 Impossible", 1, map1);
+                
 
-                game = new Game(level, player, this);
+                game = new Game(1, player, this);
 
                 levelUC = new LevelUserControl(game);
                 levelUCGrid.Children.Add(levelUC);
 
+                
 
                 game.StartGame();
                 Update();
+                levelUC.Focus();
+
             }
             catch (Exception ex)
             {
@@ -56,8 +58,8 @@ namespace SnakeGame
 
         public void Update()
         {
-          
             levelUC.Update();
+            
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -65,24 +67,23 @@ namespace SnakeGame
             Debug.WriteLine(e.Key.ToString());
             if (e.Key == Key.Up)
             {
-                game.GetSnake().Direction = SnakeDirection.Left;
+                game.GetSnake().Direction = SnakeDirection.Up;
             }
             if (e.Key == Key.Down)
             {
-                game.GetSnake().Direction = SnakeDirection.Right;
+                game.GetSnake().Direction = SnakeDirection.Down;
             }
             if (e.Key == Key.Left)
             {
-                game.GetSnake().Direction = SnakeDirection.Up;
+                game.GetSnake().Direction = SnakeDirection.Left;
             }
             if (e.Key == Key.Right)
             {
-                game.GetSnake().Direction = SnakeDirection.Down;
+                game.GetSnake().Direction = SnakeDirection.Right;
             }
             if (e.Key == Key.Space)
             {
                 game.GetSnake().AddSnakePart(5, 5);
-
             }
         }
 
