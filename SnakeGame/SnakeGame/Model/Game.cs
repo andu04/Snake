@@ -201,6 +201,16 @@ namespace SnakeGame.Model
         public void ChangeSnakeDirection(SnakeDirection dir)
         {
             if ((int)dir >= 0 && (int)dir <= 3)
+            {
+                if (this.snake.Direction == SnakeDirection.Up && dir == SnakeDirection.Down)
+                    return;
+                if (this.snake.Direction == SnakeDirection.Down && dir == SnakeDirection.Up)
+                    return;
+                if (this.snake.Direction == SnakeDirection.Left && dir == SnakeDirection.Right)
+                    return;
+                if (this.snake.Direction == SnakeDirection.Right && dir == SnakeDirection.Left)
+                    return;
+            }
                 this.snake.Direction = dir;
         }
     }
