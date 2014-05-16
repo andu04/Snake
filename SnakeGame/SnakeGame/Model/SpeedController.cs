@@ -22,7 +22,7 @@ namespace SnakeGame.Model
 
         private SpeedController()
         {
-            this.delay = 1000 / 60;
+            this.delay = 200;
             this.isPaused = true;
         }
 

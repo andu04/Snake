@@ -30,3 +30,22 @@ E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\View\UserCon
 E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\SnakeGame_MarkupCompile.lref
 E:\0. Proiecte\GIT Repositories\Snake\SnakeGame\SnakeGame\obj\Debug\View\UserControls\PlayerUserControl.baml
+D:\Snake\Snake.git\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe.config
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
+D:\Snake\Snake.git\SnakeGame\SnakeGame\bin\Debug\SnakeGame.exe
+D:\Snake\Snake.git\SnakeGame\SnakeGame\bin\Debug\SnakeGame.pdb
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csprojResolveAssemblyReference.cache
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\MainWindow.baml
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\View\UserControls\LevelUserControl.baml
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\MainWindow.g.cs
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\View\UserControls\LevelUserControl.g.cs
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\View\UserControls\PlayerUserControl.g.cs
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\App.g.cs
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame_MarkupCompile.cache
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame_MarkupCompile.lref
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\View\UserControls\PlayerUserControl.baml
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame.g.resources
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame.Properties.Resources.resources
+D:\Snake\Snake.git\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.GenerateResource.Cache

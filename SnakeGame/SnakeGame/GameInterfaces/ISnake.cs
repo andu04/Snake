@@ -22,5 +22,6 @@ namespace SnakeGame.GameInterfaces
 
         SnakePart GetSnakeHead();
         SnakePart GetNextPart(SnakePart snakePart);
+
     }
 }

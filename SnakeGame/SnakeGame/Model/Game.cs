@@ -13,7 +13,7 @@ namespace SnakeGame.Model
     class Game: IGame
     {
         private Level level;
-        private ISnake snake;
+        private Snake snake;
         private Player player;
         private SpeedController gameSpeed;
         private bool gameWon;
@@ -21,17 +21,19 @@ namespace SnakeGame.Model
         private DispatcherTimer gameDuration;
         private long timeElapsedInSeconds;
         private int currentGameScore;
-        public Game(Level level, Player player)
+        private MainWindow view;
+        public Game(int levelId, Player player, MainWindow view)
         {
-            this.level = level;
+            
             this.player = player;
-            //InitializeLevel();
+            InitializeLevel();
             InitializeGameDuration();
             InitializeGameSpeed();
             InitializeSnake();
             gameWon = false;
             gameLost = false;
             this.currentGameScore = 0;
+            this.view = view;
             
         }
 
@@ -63,10 +65,10 @@ namespace SnakeGame.Model
         }
 
         
-        //TODO: modificat parametru constructo din level in levelID si de facut metoda IniTializeLevel()
-        private void InitializeLevel()
+         private void InitializeLevel()
         {
-            throw new NotImplementedException();
+            Map map1 = new Map(10, 10);
+            this.level = new Level("Level 1 Impossible", 1, map1);
         }
 
         private void InitializeSnake()
@@ -90,11 +92,12 @@ namespace SnakeGame.Model
 
         void gameTimer_OnTick()
         {
-            if (IsValidNextMove() == true)
+            if (IsValidNextMove() == true && gameLost == false && gameWon == false)
             {
                 snake.MoveSnake();
                 SnakePart sp = snake.GetSnakeHead();
                 NPC currentNPC = level.GetNPC(sp.PositionOnX, sp.PositionOnY);
+                view.Update();
             }
             else
             {
@@ -111,33 +114,30 @@ namespace SnakeGame.Model
             switch (currentDirection)
             {
                 case SnakeDirection.Up:
-                    if (currentMapCell.PositionOnX == 0)
-                        return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY - 1);
+                    nextMapCell = new MapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY - 1);
                     break;
                 case SnakeDirection.Down:
-                    if (currentMapCell.PositionOnX == level.LevelMap.MapRows - 1)
-                        return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY + 1);
+                    nextMapCell = new MapCell(currentMapCell.PositionOnX, currentMapCell.PositionOnY + 1);
                     break;
                 case SnakeDirection.Left:
-                    if (currentMapCell.PositionOnY == 0)
-                        return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX - 1, currentMapCell.PositionOnY);
+                    nextMapCell = new MapCell(currentMapCell.PositionOnX - 1, currentMapCell.PositionOnY);
                     break;
                 case SnakeDirection.Right:
-                    if (currentMapCell.PositionOnY == level.LevelMap.MapColumns - 1)
-                        return false;
-                    nextMapCell = level.LevelMap.GetMapCell(currentMapCell.PositionOnX + 1, currentMapCell.PositionOnY);
+                    nextMapCell = new MapCell(currentMapCell.PositionOnX + 1, currentMapCell.PositionOnY);
                     break;
                 default:
                     return false;
             }
+            if (nextMapCell.PositionOnX < 0 || nextMapCell.PositionOnY >= level.LevelMap.MapRows
+                || nextMapCell.PositionOnY < 0 || nextMapCell.PositionOnX >= level.LevelMap.MapColumns)
+                    return false;
+            if (snake.Contain(new SnakePart(nextMapCell.PositionOnX, nextMapCell.PositionOnY)) == true)
+                return false;
+            nextMapCell = level.LevelMap.GetMapCell(nextMapCell.PositionOnX, nextMapCell.PositionOnY);
             if (nextMapCell.CellType == MapCellType.Block)
                 return false;
             return true;
         }
-
         public void PauseGame()
         {
             if (gameSpeed.IsPaused == false)
@@ -152,17 +152,17 @@ namespace SnakeGame.Model
 
         public Player GetPlayer()
         {
-            throw new NotImplementedException();
+            return this.player;
         }
 
         public ISnake GetSnake()
         {
-            throw new NotImplementedException();
+            return this.snake;
         }
 
         public ILevel GetLevel()
         {
-            throw new NotImplementedException();
+            return this.level;
         }
 
         private void Win()

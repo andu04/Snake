@@ -95,10 +95,18 @@ namespace SnakeGame.Model
             }
             bodyParts.Insert(HEAD_INDEX, newHeadPosition);
             bodyParts.RemoveAt(bodyParts.Count - 1);
-            if (bodyParts.Contains(waitingParts.Peek()) == false)
+            if (waitingParts.Count > 0)
             {
-                bodyParts.Add(waitingParts.Dequeue());
+                if (bodyParts.Contains(waitingParts.Peek()) == false)
+                {
+                    bodyParts.Add(waitingParts.Dequeue());
+                }
             }
+        }
+
+        internal bool Contain(SnakePart snakePart)
+        {
+            return bodyParts.Contains(snakePart);
         }
     }
 }
