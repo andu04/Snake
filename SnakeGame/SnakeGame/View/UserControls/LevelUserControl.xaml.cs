@@ -23,45 +23,55 @@ namespace SnakeGame.View.UserControls
     /// </summary>
     public partial class LevelUserControl : UserControl
     {
-
+        int viewCellSize = 40;
         private IGame model;
 
         public LevelUserControl(IGame model)
         {
             this.model = model;
             InitializeComponent();
-            canvas.Focus();
+            snakeCanvas.Width = mapCanvas.Width = viewCellSize * model.GetLevel().LevelMap.MapColumns;
+            snakeCanvas.Height = mapCanvas.Height = viewCellSize * model.GetLevel().LevelMap.MapRows;
+            DrawMap();
+            Update();
         }
 
         public void Update()
         {
-            canvas.Children.Clear();
             
-            int viewCellSize = 40;
-            canvas.Width = viewCellSize * model.GetLevel().LevelMap.MapColumns;
-            canvas.Height = viewCellSize * model.GetLevel().LevelMap.MapRows;
+            DrawSnake();
+        }
 
+        private void DrawMap()
+        {
+            IMap map = model.GetLevel().LevelMap;
             for (int i = 0; i < model.GetLevel().LevelMap.MapRows; i++)
                 for (int j = 0; j < model.GetLevel().LevelMap.MapColumns; j++)
                 {
-                    Button mapcell = new Button() { Width = 20, Height = 20 };
-                    Canvas.SetTop(mapcell, i * viewCellSize + viewCellSize / 4);
-                    Canvas.SetLeft(mapcell, j * viewCellSize + viewCellSize/4);
-                    mapcell.Opacity = 0.3;
-                    canvas.Children.Add(mapcell);
-                }
+                    Image mapcell = new Image() { Width = viewCellSize, Height = viewCellSize };
+                    Canvas.SetTop(mapcell, i * viewCellSize );
+                    Canvas.SetLeft(mapcell, j * viewCellSize );
 
-            //Rectangle part = new Rectangle();
+                    MapCell cell = map.GetMapCell(i, j);
+                    
+                    mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/normal.png", UriKind.RelativeOrAbsolute));
+                    mapCanvas.Children.Add(mapcell);
+                }
+        }
+
+        private void DrawSnake()
+        {
+            snakeCanvas.Children.Clear();
             ISnake snake = model.GetSnake();
-            SnakePart prev=null, next=null;
+            SnakePart prev = null, next = null;
             SnakePart sp = snake.GetSnakeHead();
             Button part = new Button();
             Canvas.SetLeft(part, sp.PositionOnX * viewCellSize);
             Canvas.SetTop(part, sp.PositionOnY * viewCellSize);
             part.Width = part.Height = viewCellSize;
             part.Content = "X";
-            
-            canvas.Children.Add(part);
+
+            snakeCanvas.Children.Add(part);
 
 
 
@@ -78,32 +88,27 @@ namespace SnakeGame.View.UserControls
                     // e ultimul
                     if (next == null)
                         type = "#";
-                    else 
+                    else
                     {
                         type = GetSnakePartType(prev, sp, next).ToString();
-                        
+
                     }
                     part = new Button();
                     Canvas.SetLeft(part, sp.PositionOnX * viewCellSize);
                     Canvas.SetTop(part, sp.PositionOnY * viewCellSize);
-                    
+
                     part.Width = part.Height = viewCellSize;
 
                     if (type != "0")
                     {
                         part.Width = part.Height = viewCellSize / 2;
-                        Canvas.SetLeft(part, sp.PositionOnX * viewCellSize + viewCellSize/4);
-                        Canvas.SetTop(part, sp.PositionOnY * viewCellSize + viewCellSize/4);
+                        Canvas.SetLeft(part, sp.PositionOnX * viewCellSize + viewCellSize / 4);
+                        Canvas.SetTop(part, sp.PositionOnY * viewCellSize + viewCellSize / 4);
                     }
-                    canvas.Children.Add(part);
+                    snakeCanvas.Children.Add(part);
                     part.Content = type;
                 }
             } while (sp != null);
-        }
-
-        private void UserControl_KeyDown(object sender, KeyEventArgs e)
-        {
-            MessageBox.Show("key down");
         }
 
         private int GetSnakePartType(SnakePart prev, SnakePart sp, SnakePart next)
@@ -136,5 +141,7 @@ namespace SnakeGame.View.UserControls
 
             return 0;
         }
+
+
     }
 }
