@@ -10,7 +10,7 @@ using System.Windows.Threading;
 
 namespace SnakeGame.Model
 {
-    class Game: IGame
+    class Game: Observable<Game>, IGame
     {
         private Level level;
         private Snake snake;
@@ -21,10 +21,9 @@ namespace SnakeGame.Model
         private DispatcherTimer gameDuration;
         private long timeElapsedInSeconds;
         private int currentGameScore;
-        private MainWindow view;
-        public Game(int levelId, Player player, MainWindow view)
-        {
-            
+        
+        public Game(int levelId, Player player)
+        {    
             this.player = player;
             InitializeLevel();
             InitializeGameDuration();
@@ -33,8 +32,6 @@ namespace SnakeGame.Model
             gameWon = false;
             gameLost = false;
             this.currentGameScore = 0;
-            this.view = view;
-            
         }
 
         private void InitializeGameDuration()
@@ -97,7 +94,7 @@ namespace SnakeGame.Model
                 snake.MoveSnake();
                 SnakePart sp = snake.GetSnakeHead();
                 NPC currentNPC = level.GetNPC(sp.PositionOnX, sp.PositionOnY);
-                view.Update();
+                Notify(this);
             }
             else
             {
