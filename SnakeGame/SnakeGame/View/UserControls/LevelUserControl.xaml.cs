@@ -23,8 +23,9 @@ namespace SnakeGame.View.UserControls
     /// </summary>
     public partial class LevelUserControl : UserControl
     {
-        int viewCellSize = 40;
+        int viewCellSize = 26;
         private IGame model;
+        private bool coada = true;
 
         public LevelUserControl(IGame model)
         {
@@ -52,11 +53,117 @@ namespace SnakeGame.View.UserControls
                     Canvas.SetTop(mapcell, i * viewCellSize );
                     Canvas.SetLeft(mapcell, j * viewCellSize );
 
-                    MapCell cell = map.GetMapCell(i, j);
-                    
-                    mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/normal.png", UriKind.RelativeOrAbsolute));
+                    MapCell cell = map.GetMapCell(j, i);
+                    try
+                    {
+                        switch (cell.CellType)
+                        {
+                            case MapCellType.Normal:
+                                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/normal.png", UriKind.RelativeOrAbsolute));
+                                break;
+                            case MapCellType.Accelerate:
+                                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/accelerate.png", UriKind.RelativeOrAbsolute));
+                                break;
+                            case MapCellType.Slowdown:
+                                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/slow.png", UriKind.RelativeOrAbsolute));
+                                break;
+                            case MapCellType.Block:
+                                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/block.png", UriKind.RelativeOrAbsolute));
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    catch
+                    {
+                        Debug.WriteLine("eroare view cell type files");
+                    }
+
                     mapCanvas.Children.Add(mapcell);
                 }
+            DrawMapBorder(map);
+        }
+
+        private void DrawMapBorder(IMap map)
+        {
+            int rows = map.MapRows;
+            int columns = map.MapColumns;
+
+            // UP
+            for (int j = 1; j < columns - 1; j++)
+            {
+                Image mapcell = new Image() { Width = viewCellSize, Height = viewCellSize };
+                Canvas.SetTop(mapcell, 0 * viewCellSize);
+                Canvas.SetLeft(mapcell, j * viewCellSize);
+
+                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border2.png", UriKind.RelativeOrAbsolute));
+                mapCanvas.Children.Add(mapcell);
+            }
+
+            // RIGHT
+            for (int i = 1; i < rows - 1; i++)
+            {
+                Image mapcell = new Image() { Width = viewCellSize, Height = viewCellSize };
+                Canvas.SetTop(mapcell, i * viewCellSize);
+                Canvas.SetLeft(mapcell, (columns - 1) * viewCellSize);
+
+                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border4.png", UriKind.RelativeOrAbsolute));
+                mapCanvas.Children.Add(mapcell);
+            }
+
+            // DOWN
+            for (int j = 1; j < columns - 1; j++)
+            {
+                Image mapcell = new Image() { Width = viewCellSize, Height = viewCellSize };
+                Canvas.SetTop(mapcell, (rows - 1) * viewCellSize);
+                Canvas.SetLeft(mapcell, j * viewCellSize);
+
+                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border6.png", UriKind.RelativeOrAbsolute));
+                mapCanvas.Children.Add(mapcell);
+            }
+
+            // LEFT
+            for (int i = 1; i < rows - 1; i++)
+            {
+                Image mapcell = new Image() { Width = viewCellSize, Height = viewCellSize };
+                Canvas.SetTop(mapcell, i * viewCellSize);
+                Canvas.SetLeft(mapcell, 0 * viewCellSize);
+
+                mapcell.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border8.png", UriKind.RelativeOrAbsolute));
+                mapCanvas.Children.Add(mapcell);
+            }
+
+            //
+            // CORNERS
+            //
+            Image mapcel = new Image() { Width = viewCellSize, Height = viewCellSize };
+            Canvas.SetTop(mapcel, 0 * viewCellSize);
+            Canvas.SetLeft(mapcel, (columns - 1) * viewCellSize);
+            mapcel.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border3.png", UriKind.RelativeOrAbsolute));
+            mapCanvas.Children.Add(mapcel);
+
+
+            mapcel = new Image() { Width = viewCellSize, Height = viewCellSize };
+            Canvas.SetTop(mapcel, 0 * viewCellSize);
+            Canvas.SetLeft(mapcel, 0 * viewCellSize);
+            mapcel.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border1.png", UriKind.RelativeOrAbsolute));
+            mapCanvas.Children.Add(mapcel);
+
+
+
+            mapcel = new Image() { Width = viewCellSize, Height = viewCellSize };
+            Canvas.SetTop(mapcel, (rows-1) * viewCellSize);
+            Canvas.SetLeft(mapcel, (columns - 1) * viewCellSize);
+            mapcel.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border5.png", UriKind.RelativeOrAbsolute));
+            mapCanvas.Children.Add(mapcel);
+
+
+
+            mapcel = new Image() { Width = viewCellSize, Height = viewCellSize };
+            Canvas.SetTop(mapcel, (rows-1) * viewCellSize);
+            Canvas.SetLeft(mapcel, 0 * viewCellSize);
+            mapcel.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/border7.png", UriKind.RelativeOrAbsolute));
+            mapCanvas.Children.Add(mapcel);
         }
 
         private void DrawSnake()
@@ -65,15 +172,35 @@ namespace SnakeGame.View.UserControls
             ISnake snake = model.GetSnake();
             SnakePart prev = null, next = null;
             SnakePart sp = snake.GetSnakeHead();
-            Button part = new Button();
-            Canvas.SetLeft(part, sp.PositionOnX * viewCellSize);
-            Canvas.SetTop(part, sp.PositionOnY * viewCellSize);
-            part.Width = part.Height = viewCellSize;
-            part.Content = "X";
+            Image part1 = new Image();
+            Canvas.SetLeft(part1, sp.PositionOnX * viewCellSize);
+            Canvas.SetTop(part1, sp.PositionOnY * viewCellSize);
+            part1.Width = part1.Height = viewCellSize;
+            part1.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/cap2.png", UriKind.RelativeOrAbsolute));
 
-            snakeCanvas.Children.Add(part);
+            switch (snake.Direction)
+            {
+                case SnakeDirection.Up:
+                    part1.RenderTransform = new RotateTransform(180, viewCellSize/2, viewCellSize/2);
+                    break;
+                case SnakeDirection.Left:
+                    part1.RenderTransform = new RotateTransform(90, viewCellSize / 2, viewCellSize / 2);
+                    break;
+                case SnakeDirection.Right:
+                    var transformGroup = new TransformGroup();
+                    transformGroup.Children.Add(new RotateTransform(270, viewCellSize / 2, viewCellSize / 2)); 
+                    transformGroup.Children.Add(new ScaleTransform(1, -1, viewCellSize / 2, viewCellSize / 2)); 
+                    part1.RenderTransform = transformGroup;
+               
+                    break;
+                case SnakeDirection.Down:
+                    break;
+                default:
+                    break;
+            }
 
-
+           
+            snakeCanvas.Children.Add(part1);
 
             do
             {
@@ -83,32 +210,95 @@ namespace SnakeGame.View.UserControls
                 sp = snake.GetNextPart(sp);
                 next = snake.GetNextPart(sp);
 
+                int partType = -1;
+
+                Image part = new Image();
                 if (sp != null)
                 {
                     // e ultimul
                     if (next == null)
-                        type = "#";
+                    {
+                        if(coada)
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/coada1.png", UriKind.RelativeOrAbsolute));
+                        else
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/coada2.png", UriKind.RelativeOrAbsolute));
+                        coada = !coada;
+
+                        switch (GetCoadaDirection(prev, sp))
+                        {
+                            case SnakeDirection.Up:
+                               
+                                break;
+                            case SnakeDirection.Left:
+                                var transformGroup = new TransformGroup();
+                                transformGroup.Children.Add(new RotateTransform(90, viewCellSize / 2, viewCellSize / 2));
+                                transformGroup.Children.Add(new ScaleTransform(-1, 1, viewCellSize / 2, viewCellSize / 2));
+                                part.RenderTransform = transformGroup;
+                                break;
+                            case SnakeDirection.Right:
+                                transformGroup = new TransformGroup();
+                                transformGroup.Children.Add(new RotateTransform(270, viewCellSize / 2, viewCellSize / 2));
+                                transformGroup.Children.Add(new ScaleTransform(-1, 1, viewCellSize / 2, viewCellSize / 2));
+                                part.RenderTransform = transformGroup;
+                                break;
+                            case SnakeDirection.Down:
+                                part.RenderTransform = new RotateTransform(180, viewCellSize / 2, viewCellSize / 2);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
                     else
                     {
-                        type = GetSnakePartType(prev, sp, next).ToString();
-
+                        partType = GetSnakePartType(prev, sp, next);
                     }
-                    part = new Button();
+
                     Canvas.SetLeft(part, sp.PositionOnX * viewCellSize);
                     Canvas.SetTop(part, sp.PositionOnY * viewCellSize);
-
                     part.Width = part.Height = viewCellSize;
 
-                    if (type != "0")
+                    switch (partType)
                     {
-                        part.Width = part.Height = viewCellSize / 2;
-                        Canvas.SetLeft(part, sp.PositionOnX * viewCellSize + viewCellSize / 4);
-                        Canvas.SetTop(part, sp.PositionOnY * viewCellSize + viewCellSize / 4);
+                        case 1:
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/part1.png", UriKind.RelativeOrAbsolute));
+                            break;
+                        case 2:
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/part2.png", UriKind.RelativeOrAbsolute));
+                            break;
+                        case 3:
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/part3.png", UriKind.RelativeOrAbsolute));
+                            break;
+                        case 4:
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/part4.png", UriKind.RelativeOrAbsolute));
+                            break;
+
+                        case 5:
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/vertical2.png", UriKind.RelativeOrAbsolute));
+                            break;
+                        case 6:
+                            part.Source = new BitmapImage(new Uri("/SnakeGame;component/View/Resources/snake/horizontal2.png", UriKind.RelativeOrAbsolute));
+                            break;
+                        default:
+                            break;
                     }
+
+
                     snakeCanvas.Children.Add(part);
-                    part.Content = type;
                 }
             } while (sp != null);
+        }
+
+        private SnakeDirection GetCoadaDirection(SnakePart prev, SnakePart sp)
+        {
+            if (prev.PositionOnY == sp.PositionOnY + 1)
+                return SnakeDirection.Down;
+            if (prev.PositionOnY == sp.PositionOnY - 1)
+                return SnakeDirection.Up;
+            if (prev.PositionOnX == sp.PositionOnX + 1)
+                return SnakeDirection.Right;
+            if (prev.PositionOnX == sp.PositionOnX - 1)
+                return SnakeDirection.Left;
+            return SnakeDirection.Up;
         }
 
         private int GetSnakePartType(SnakePart prev, SnakePart sp, SnakePart next)
@@ -138,6 +328,15 @@ namespace SnakeGame.View.UserControls
             if (next.PositionOnX == sp.PositionOnX && next.PositionOnY == sp.PositionOnY - 1
                && prev.PositionOnX == sp.PositionOnX + 1 && prev.PositionOnY == sp.PositionOnY)
                 return 4;
+
+
+            // vertical
+            if (next.PositionOnX == sp.PositionOnX && prev.PositionOnX == sp.PositionOnX)
+                return 5;
+
+            // horizontal
+            if (next.PositionOnY == sp.PositionOnY && prev.PositionOnY == sp.PositionOnY)
+                return 6;
 
             return 0;
         }

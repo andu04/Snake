@@ -9,8 +9,8 @@ namespace SnakeGame.Model
 {
     internal class Map:IMap
     {
-        private int MIN_MAP_ROWS = 10;
-        private int MIN_MAP_COLUMNS = 10;
+        private int MIN_MAP_ROWS = 5;
+        private int MIN_MAP_COLUMNS = 5;
         private int mapRows;
         private int mapColumns;
         private List<MapCell> mapCells;
@@ -26,7 +26,19 @@ namespace SnakeGame.Model
             mapCells = new List<MapCell>();
             for (int i = 0; i < MapColumns; i++)
                 for (int j = 0; j < MapRows; j++)
-                    mapCells.Add(new MapCell(i, j));
+                {
+                    // [mihai] - demo for cell types
+                    if (i == 5 && j == 5)
+                        mapCells.Add(new MapCell(MapCellType.Slowdown, i, j));
+                    else
+                        if (i == 1 && j == 1)
+                            mapCells.Add(new MapCell(MapCellType.Block, i, j));
+                        else
+                            if (i == 3 && j == 8)
+                                mapCells.Add(new MapCell(MapCellType.Accelerate, i, j));
+                            else
+                                mapCells.Add(new MapCell(i, j));
+                }
             InitializeSnakeStartPosition();
         }
 

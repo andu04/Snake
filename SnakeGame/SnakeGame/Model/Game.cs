@@ -64,7 +64,7 @@ namespace SnakeGame.Model
         
          private void InitializeLevel()
         {
-            Map map1 = new Map(10, 10);
+            Map map1 = new Map(20, 30);
             this.level = new Level("Level 1 Impossible", 1, map1);
         }
 

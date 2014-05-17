@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Observable.cs" />
     <Compile Include="View\UserControls\Convertors\IntToArrayOfListItemsConvertor.cs" />
     <Compile Include="View\UserControls\Convertors\IntToElementsInStringConverter.cs" />
     <Compile Include="View\UserControls\Convertors\IntToTimeSpanConverter.cs" />
@@ -126,7 +127,37 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\Resources\accelerate.png" />
+    <Resource Include="View\Resources\block.png" />
+    <Resource Include="View\Resources\border1.png" />
+    <Resource Include="View\Resources\border2.png" />
+    <Resource Include="View\Resources\border3.png" />
+    <Resource Include="View\Resources\border4.png" />
+    <Resource Include="View\Resources\border5.png" />
+    <Resource Include="View\Resources\border6.png" />
+    <Resource Include="View\Resources\border7.png" />
+    <Resource Include="View\Resources\border8.png" />
+    <Resource Include="View\Resources\normal.png" />
+    <Resource Include="View\Resources\slow.png" />
+    <Resource Include="View\Resources\slow1.png" />
+    <Resource Include="View\Resources\snake\cap.png" />
+    <Resource Include="View\Resources\snake\cap1.png" />
+    <Resource Include="View\Resources\snake\cap2.png" />
+    <Resource Include="View\Resources\snake\coada.png" />
+    <Resource Include="View\Resources\snake\coada1.png" />
+    <Resource Include="View\Resources\snake\coada2.png" />
+    <Resource Include="View\Resources\snake\horizontal.png" />
+    <Resource Include="View\Resources\snake\horizontal1.png" />
+    <Resource Include="View\Resources\snake\horizontal2.png" />
+    <Resource Include="View\Resources\snake\ninjacap.png" />
+    <Resource Include="View\Resources\snake\part1.png" />
+    <Resource Include="View\Resources\snake\part2.png" />
+    <Resource Include="View\Resources\snake\part3.png" />
+    <Resource Include="View\Resources\snake\part4.png" />
+    <Resource Include="View\Resources\snake\vertical1.png" />
+    <Resource Include="View\Resources\snake\vertical2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -94,12 +94,10 @@ namespace SnakeGame
                 }
 
                 Update();
-
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Eroare in mainwindow : " + ex.Message);
+                Debug.WriteLine("Eroare in mainwindow : " + ex.Message);
             }
 
         }
